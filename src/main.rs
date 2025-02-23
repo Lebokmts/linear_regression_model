@@ -61,4 +61,20 @@ fn main() {
     println!("Training complete!");
 }
 
+fn test_model(model: &LinearRegression) {
+    let test_x = Tensor::<NdArray, 1>::from_data(Data::from(vec![2.0, 4.0, 6.0, 8.0]));
+    let predictions = model.forward(&test_x);
+
+    println!("\nTesting Model Predictions:");
+    for (i, pred) in predictions.into_data().convert().iter().enumerate() {
+        println!("For x = {}, predicted y = {:.2}", (i + 1) * 2, pred);
+    }
+}
+
+fn main() {
+    // ... (Previous training code)
+
+    test_model(&model);
+}
+
 
