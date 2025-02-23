@@ -3,6 +3,8 @@ use burn::module::Module;
 use burn::optim::{Optimizer, SGD}; 
 use burn::nn::loss::mse_loss;
 use rand::Rng;
+use textplots::{Chart, Plot, Shape};
+
 
 #[derive(Module, Debug)]
 struct LinearRegression {
