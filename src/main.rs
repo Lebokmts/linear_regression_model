@@ -64,14 +64,25 @@ fn main() {
 }
 
 fn test_model(model: &LinearRegression) {
-    let test_x = Tensor::<NdArray, 1>::from_data(Data::from(vec![2.0, 4.0, 6.0, 8.0]));
-    let predictions = model.forward(&test_x);
+    let test_x: Vec<f32> = (0..10).map(|x| x as f32).collect();
+    let test_y: Vec<f32> = test_x.iter().map(|x| 2.0 * x + 1.0).collect();
+    let pred_y: Vec<f32> = model
+        .forward(&Tensor::<NdArray, 1>::from_data(Data::from(test_x.clone())))
+        .into_data()
+        .convert();
 
     println!("\nTesting Model Predictions:");
-    for (i, pred) in predictions.into_data().convert().iter().enumerate() {
-        println!("For x = {}, predicted y = {:.2}", (i + 1) * 2, pred);
+    for (x, pred) in test_x.iter().zip(pred_y.iter()) {
+        println!("For x = {:.1}, predicted y = {:.2}", x, pred);
     }
+
+    println!("\nPlotting Results...");
+    Chart::new(100, 30, 0.0, 10.0)
+        .lineplot(&Shape::Lines(&test_x, &test_y))
+        .lineplot(&Shape::Lines(&test_x, &pred_y))
+        .display();
 }
+
 
 fn main() {
     // ... (Previous training code)
