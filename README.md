@@ -68,6 +68,21 @@ For x = 6.0, predicted y = 13.99
 
 For x = 8.0, predicted y = 17.98
 
+# Resources used
+- ChatGPT (AI)
+
+- RustRover
+
+- Terminal and Command Line Interface
+
+- Git
+
+- Visual Studio Code
+
+- Youtube
+
+- The Internet
+
 # Thoughts on this project
 
 I had a bit of challenges especially getting the code to run. This weeks assignment was a hectic one considering that I am not familiar with rust, it was my very first time interacting with it
